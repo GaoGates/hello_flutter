@@ -1,5 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main() => runApp(new MyApp());
 
@@ -7,16 +8,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Welcome to Flutter',
-      home: new Scaffold(
-        appBar: new AppBar(
-          title: new Text('Welcome to Flutter'),
-        ),
-        body: new Center(
-          child: new RandomWords(),
-        ),
-      ),
-    );
+        theme: new ThemeData(primaryColor: Colors.white),
+        home: new RandomWords());
   }
 }
 
@@ -76,6 +69,8 @@ class RandomWordsState extends State<RandomWords> {
 
   Widget _buildSuggestions() {
     return new ListView.builder(itemBuilder: (context, i) {
+      padding:
+      const EdgeInsets.all(16.0);
       if (i.isOdd) return new Divider();
       final index = i ~/ 2;
       if (index >= _suggestions.length) {
